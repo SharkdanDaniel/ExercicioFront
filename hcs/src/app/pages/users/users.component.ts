@@ -1,5 +1,6 @@
 import { UsersService } from './../../core/services/users.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -10,9 +11,8 @@ export class UsersComponent implements OnInit {
 
   // LISTA DE USUÁRIOS
   users: any[] = [];
-  user: any = {};
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
     this.usersService.getUsers().subscribe(users => {
@@ -22,10 +22,14 @@ export class UsersComponent implements OnInit {
     })
   }
 
-  addUser(): void {
-    this.usersService.getAdd(this.user)
-    console.log('produto criado')
+  routerToUserCreate(): void {
+    this.router.navigate(['/users/create'])
   }
+
+  // addUser(): void {
+  //   this.usersService.addUser(this.user)
+  //   console.log('produto criado')
+  // }
 
   // getUsers() {
   //   this.usersService.getUsers().subscribe( data => {

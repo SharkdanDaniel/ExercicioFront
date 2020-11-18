@@ -19,8 +19,9 @@ export class UsersService {
     return this.http.get<any[]>(`http://hcs.dev4.com.br/api/Users/GetUsers/${this.token}`)
   }
 
-  getAdd(user: any) : Observable<any> {
-    return this.http.post<any>(`http://hcs.dev4.com.br/api/Users/AddUser/${this.token}`)
+  addUser(user: any) : Observable<any> {
+    const token = this.token;
+    return this.http.post<any>(`http://hcs.dev4.com.br/api/Users/GetUsers/`, { token })
   }
 
   // getUsers(){
@@ -31,23 +32,23 @@ export class UsersService {
   // }
 
   // addUser(){
-  //   const token = this.tokenService.getToken();
+  //   const token = this.token;
   //   return this.http
   //     .post(`http://hcs.dev4.com.br/api/Users/AddUser/`, { token })
   //     .pipe(map((res) => res));
   // }
 
   // deleteUser(id: string){
-  //   const token = this.tokenService.getToken();
+  //   const token = this.token;
   //   return this.http
-  //     .delete(`http://hcs.dev4.com.br/api/Users/DelUser/${token}/${id}`)
+  //     .delete(`http://hcs.dev4.com.br/api/Users/DelUser/`, { token })
   //     .pipe(map((res) => res));
   // }
 
   // editUser(id: string){
-  //   const token = this.tokenService.getToken();
+  //   const token = this.token;
   //   return this.http
-  //     .put(`http://hcs.dev4.com.br/api/Users/EditUser/${token}/${id}`)
+  //     .put(`http://hcs.dev4.com.br/api/Users/EditUser/`, { token })
   //     .pipe(map((res) => res));
   // }
 
